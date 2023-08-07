@@ -45,8 +45,6 @@ class Weather {
         const humidity = weatherData.current.humidity
         const pressure = weatherData.current.pressure_mb
         const wind = weatherData.current.wind_kph
-        // this.displayWeather(cityName, temperature, pressure, humidity, wind)
-        // return weatherData
         return {cityName, temperature, pressure, humidity, wind}
     }
 
@@ -59,10 +57,7 @@ class Weather {
         // powtórzona funkcja getWeatherFromApi(). czy to będzie ten sam obiekt który został użyty w getWeatherData()?
         // czy może lepiej przenieść funkcję getWeatherFromApi() do konstruktora klasy?
         // no i czy można w konstruktorze klasy użyć metody tejże klasy?
-        // console.log('dane z prognozy', weatherData.forecast.forecastday)
-        const forecastData = weatherData.forecast.forecastday
-        // console.log('dane z prognozy', weatherData)
-        return forecastData
+        return weatherData.forecast.forecastday
     }
 
 
@@ -79,7 +74,6 @@ class Weather {
             weatherElement.querySelector('.pressure__value').textContent = currentWeatherData.pressure
             weatherElement.querySelector('.humidity__value').textContent = currentWeatherData.humidity
             weatherElement.querySelector('.wind-speed__value').textContent = currentWeatherData.wind
-            console.log('currentWeatherData', currentWeatherData)
         }
         catch (error) {
             console.log('something is no yes', error)
