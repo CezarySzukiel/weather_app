@@ -54,9 +54,6 @@ class Weather {
      */
     async getWeatherForecast () {
         const weatherData = await this.getWeatherFromApi()
-        // powtórzona funkcja getWeatherFromApi(). czy to będzie ten sam obiekt który został użyty w getWeatherData()?
-        // czy może lepiej przenieść funkcję getWeatherFromApi() do konstruktora klasy?
-        // no i czy można w konstruktorze klasy użyć metody tejże klasy?
         return weatherData.forecast.forecastday
     }
 
@@ -87,7 +84,7 @@ class Weather {
     async displayWeatherForecast () {
         try {
             const forecastData = await this.getWeatherForecast()
-            let forecastElement = document.querySelector('.weather__forecast')
+            const forecastElement = document.querySelector('.weather__forecast')
             for (let i = 0; i < forecastElement.children.length; i++) {
                 let elem = forecastElement.children[i]
                 elem.querySelector('.day').innerHTML = getDayOfWeek(forecastData[i].date_epoch)
@@ -192,5 +189,3 @@ document.querySelector('.find-city').addEventListener('submit', function (event)
         formDiv.toggleAttribute('hidden')
     }, 1000)
 })
-
-//todo jak sprawić by miasto się dodawało do listy miast zamiast podmieniać jeden element?
